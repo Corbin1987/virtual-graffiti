@@ -29,20 +29,36 @@ app.controller('SimpleAjax', function($scope, $http) {
 
   $http({
   method: 'GET',
-  url: '/someUrl'
+  url: 'https://radiant-savannah-52082.herokuapp.com/'
 }).then(function successCallback(response) {
-    $scope.testAjax = response;
+  console.log(response)
+    $scope.testAjax = response.data.url;
+    debugger
   }, function errorCallback(response) {
     $scope.testAjax = "error";
   });
 });
 
 
+// var addMarker = navigator.geolocation.getCurrentPosition(function(position) {
+//       var marker = new google.maps.Marker({position:
+//           {lat: position.coords.latitude,
+//           lng: position.coords.longitude},
+//           map: map});
+//     });
 
-app.controller('CameraCtrl', function($scope, $cordovaCamera) {
+
+
+app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocation, $http) {
+  
+  $scope.disabled = true;
+
+  var pictureData;
+  var coordData;
 
   $scope.pictureUrl = "http://placehold.it/300x500";
   $scope.takePicture = function() {
+    $scope.disabled = true;
     var options = {
       quality: 100,
       destinationType: Camera.DestinationType.DATA_URL,
@@ -56,23 +72,51 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera) {
       correctOrientation:true
     };
 
-    var addMarker = navigator.geolocation.getCurrentPosition(function(position) {
-      var marker = new google.maps.Marker({position:
-          {lat: position.coords.latitude,
-          lng: position.coords.longitude},
-          map: map});
-    });
+    $cordovaCamera.getPicture(options).then(function(data) {
+        // console.log("camera data " + angular.toJson(data));
+        pictureData = 'data:image/jpeg;base64,' + data;
+        console.log(pictureData)
+        $scope.pictureUrl = pictureData;
 
-    $cordovaCamera.getPicture(options)
-      .then(function(data) {
-        console.log("camera data " + angular.toJson(data));
-        addMarker();
-        $scope.pictureUrl = 'data:image/jpeg;base64,' + data;
+        getCoords().then(function(position) {
+          coordData = {lat: position.coords.latitude, long: position.coords.longitude};
+          console.log(coordData)
+          $scope.disabled = false;
+          //enable the button
+        }), function(error) {
+          // error for coords
+        }
       }, function(error) {
         console.log("camera error " + angular.toJson(data));
       });
   };
+
+  var getCoords = function(){
+    var posOptions = {timeout: 10000, enableHighAccuracy: false};
+    return $cordovaGeolocation.getCurrentPosition(posOptions)
+  }
+
+  $scope.savePicture = function(){
+
+  console.log("in save picture");
+
+    // url: 'https://radiant-savannah-52082.herokuapp.com/pictures',
+    $http({
+    method: 'POST',
+    url : 'http://172.16.0.12:3000/pictures',
+    data: {params: {pictureData: pictureData, coordData: coordData}}
+    }).then(function successCallback(response) {
+      console.log("in successCallback")
+      $scope.testAjax = response.data.url;
+
+    }, function errorCallback(response) {
+      console.log(response);
+    });
+
+
+  }
 });
+
 
 app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoading, $ionicPlatform) {
   $ionicPlatform.ready(function() {
