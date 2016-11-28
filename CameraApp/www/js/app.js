@@ -23,6 +23,20 @@ app.run(function($ionicPlatform) {
   });
 })
 
+app.controller('SimpleAjax', function($scope, $http) {
+
+  $scope.testAjax = "Test";
+
+  $http({
+  method: 'GET',
+  url: '/someUrl'
+}).then(function successCallback(response) {
+    $scope.testAjax = response;
+  }, function errorCallback(response) {
+    $scope.testAjax = "error";
+  });
+});
+
 
 
 app.controller('CameraCtrl', function($scope, $cordovaCamera) {
