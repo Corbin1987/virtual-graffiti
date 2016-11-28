@@ -40,6 +40,14 @@ app.controller('SimpleAjax', function($scope, $http) {
 });
 
 
+// var addMarker = navigator.geolocation.getCurrentPosition(function(position) {
+//       var marker = new google.maps.Marker({position:
+//           {lat: position.coords.latitude,
+//           lng: position.coords.longitude},
+//           map: map});
+//     });
+
+
 
 app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocation, $http) {
   
@@ -63,6 +71,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
       saveToPhotoAlbum: false,
       correctOrientation:true
     };
+
     $cordovaCamera.getPicture(options).then(function(data) {
         // console.log("camera data " + angular.toJson(data));
         pictureData = 'data:image/jpeg;base64,' + data;
@@ -110,40 +119,33 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
 
 
 app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoading, $ionicPlatform) {
-    
-   $ionicPlatform.ready(function() {
-        
-       $ionicLoading.show({
-           template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Acquiring location!'
-       });
-        
-       var posOptions = {
-           enableHighAccuracy: true,
-           timeout: 20000,
-           maximumAge: 0
-       };
-       $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-           var lat  = position.coords.latitude;
-           var long = position.coords.longitude;
-            
-           var myLatlng = new google.maps.LatLng(lat, long);
-            
-           var mapOptions = {
-               center: myLatlng,
-               zoom: 16,
-               mapTypeId: google.maps.MapTypeId.ROADMAP
-           };          
-            
-           var map = new google.maps.Map(document.getElementById("map"), mapOptions);          
-            
-           $scope.map = map;   
-           $ionicLoading.hide();           
-            
-       }, function(err) {
-           $ionicLoading.hide();
-           console.log(err);
-       });
-   });               
-});
+  $ionicPlatform.ready(function() {
+    $ionicLoading.show({
+      template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Acquiring location!'
+    });
 
+  var posOptions = { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 };
 
+  $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    var myLatlng = new google.maps.LatLng(lat, lng);
+
+    var mapOptions = { center: myLatlng, zoom: 16, mapTypeId: google.maps.MapTypeId.ROADMAP };
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+    var marker1 = new google.maps.Marker({position: {lat: 41.876389, lng: -87.65328}, map: map}); // DBC
+    var marker2 = new google.maps.Marker({position: {lat: 41.87717, lng: -87.6555}, map: map}); // Target
+    var marker3 = new google.maps.Marker({position: {lat: 41.876714, lng: -87.657297}, map: map}); // Wise Owl
+    var marker4 = new google.maps.Marker({position: {lat:41.875387, lng: -87.647541}, map: map}); // UIC-Halsted Blue Line
+    var marker5 = new google.maps.Marker({position: {lat: 41.87972, lng: -87.650478}, map: map}); // Dog park
+
+    $scope.map = map;
+    $ionicLoading.hide();},
+    function(err) {
+      $ionicLoading.hide();
+      console.log(err);
+    });
+  });
+
+}); // end of mapController
