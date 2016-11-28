@@ -4,8 +4,8 @@ class Picture < ActiveRecord::Base
 
   has_attached_file :image, styles: {
     small: "64x64",
-    medium: "200x200",
-    large: "400x400"
+    medium: "300x500",
+    large: "500x700"
   }
 
   validates_attachment :image, {

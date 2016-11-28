@@ -6,10 +6,9 @@ class PicturesController < ActionController::Base
   #   picture = Picture.new
   # end
 
-
-
   def create
-    
+    @location = Location.create(latitude: params[locationData:[:lat]], longitude: params[locationData:[:long]])
+    @picture = Picture.create(image: params[:pictureData], location_id: @location.id)
     p params
     # picture = Picture.new
 
