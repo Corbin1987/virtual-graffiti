@@ -74,16 +74,28 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
   var posOptions = { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 };
 
   $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
-    var lat  = position.coords.latitude;
+    var lat = position.coords.latitude;
     var lng = position.coords.longitude;
     var myLatlng = new google.maps.LatLng(lat, lng);
+
     var mapOptions = { center: myLatlng, zoom: 16, mapTypeId: google.maps.MapTypeId.ROADMAP };
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
     var marker1 = new google.maps.Marker({position: {lat: 41.876389, lng: -87.65328}, map: map}); // DBC
     var marker2 = new google.maps.Marker({position: {lat: 41.87717, lng: -87.6555}, map: map}); // Target
     var marker3 = new google.maps.Marker({position: {lat: 41.876714, lng: -87.657297}, map: map}); // Wise Owl
     var marker4 = new google.maps.Marker({position: {lat:41.875387, lng: -87.647541}, map: map}); // UIC-Halsted Blue Line
     var marker5 = new google.maps.Marker({position: {lat: 41.87972, lng: -87.650478}, map: map}); // Dog park
+
+    var mapClickListener = function() {
+      document.getElementById("map").addEventListener("click", function() {
+        new google.maps.Marker({position:
+          {lat: position.coords.latitude,
+          lng: position.coords.longitude},
+          map: map});
+      });
+    };
+
     $scope.map = map;
     $ionicLoading.hide();},
     function(err) {
@@ -91,6 +103,5 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
       console.log(err);
     });
   });
-});
 
-
+}); // end of mapController
