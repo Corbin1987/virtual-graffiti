@@ -9,6 +9,7 @@ class PicturesController < ActionController::Base
 
 
   def create
+    
     p params
     # picture = Picture.new
 
