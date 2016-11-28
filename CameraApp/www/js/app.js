@@ -55,9 +55,18 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera) {
       saveToPhotoAlbum: false,
       correctOrientation:true
     };
+
+    var addMarker = navigator.geolocation.getCurrentPosition(function(position) {
+      var marker = new google.maps.Marker({position:
+          {lat: position.coords.latitude,
+          lng: position.coords.longitude},
+          map: map});
+    });
+
     $cordovaCamera.getPicture(options)
       .then(function(data) {
         console.log("camera data " + angular.toJson(data));
+        addMarker();
         $scope.pictureUrl = 'data:image/jpeg;base64,' + data;
       }, function(error) {
         console.log("camera error " + angular.toJson(data));
@@ -86,15 +95,6 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
     var marker3 = new google.maps.Marker({position: {lat: 41.876714, lng: -87.657297}, map: map}); // Wise Owl
     var marker4 = new google.maps.Marker({position: {lat:41.875387, lng: -87.647541}, map: map}); // UIC-Halsted Blue Line
     var marker5 = new google.maps.Marker({position: {lat: 41.87972, lng: -87.650478}, map: map}); // Dog park
-
-    var mapClickListener = function() {
-      document.getElementById("map").addEventListener("click", function() {
-        new google.maps.Marker({position:
-          {lat: position.coords.latitude,
-          lng: position.coords.longitude},
-          map: map});
-      });
-    };
 
     $scope.map = map;
     $ionicLoading.hide();},
