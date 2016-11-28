@@ -32,6 +32,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
+gem 'aws-sdk', '~> 2'
+gem 'aws-sdk-rails'
+
+gem 'rgeo'
+
+gem 'activerecord-postgis-adapter'
+
+gem 'rack-cors', :require => 'rack/cors'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
