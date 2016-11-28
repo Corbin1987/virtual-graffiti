@@ -5,6 +5,8 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+Dotenv::Railtie.load
+HOSTNAME = ENV['HOSTNAME']
 
 module VirtualGraffiti
   class Application < Rails::Application
@@ -26,7 +28,7 @@ module VirtualGraffiti
 
 
     # if we want to add rack-cors
-    
+
     # config.middleware.insert_before 0, Rack::Cors do
     #   allow do
     #     origins '*'
@@ -36,6 +38,6 @@ module VirtualGraffiti
 
 
 
-    
+
   end
 end
