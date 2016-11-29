@@ -50,7 +50,7 @@ app.controller('SimpleAjax', function($scope, $http) {
 
 
 app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocation, $http) {
-  
+
   $scope.disabled = true;
 
   var pictureData;
@@ -151,3 +151,28 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
   });
 
 }); // end of mapController
+
+app.controller('canvasController', function() {
+  var canvas = document.getElementByTagName("canvas");
+  var ctx = canvas.getContext("2d");
+  var drawingColor = "#FFFFFF";
+
+  canvas.addEventListener("touchstart", function() {
+    ctx.beginPath();
+    ctx.moveTo(x, y); //move to user position
+    ctx.strokeStyle = drawingColor;
+  });
+
+  canvas.addEventListener("touchmove", function() {
+    ctx.lineTo(x, y); //follow user position
+    ctx.stroke();
+  });
+
+
+
+
+}); // end of canvasController
+
+
+
+
