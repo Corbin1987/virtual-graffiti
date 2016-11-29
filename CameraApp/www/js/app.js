@@ -52,11 +52,12 @@ app.controller('SimpleAjax', function($scope, $http) {
 app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocation, $http) {
 
   $scope.disabled = true;
+  $scope.show = false;
 
   var pictureData;
   var coordData;
 
-  $scope.pictureUrl = "http://placehold.it/300x500";
+  // $scope.pictureUrl = "http://placehold.it/300x500";
   $scope.takePicture = function() {
     $scope.disabled = true;
     var options = {
@@ -65,8 +66,6 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
       sourceType: Camera.PictureSourceType.CAMERA,
       allowEdit: true,
       encodingType: Camera.EncodingType.JPEG,
-
-
       popoverOptions: CameraPopoverOptions,
       saveToPhotoAlbum: false,
       correctOrientation:true
@@ -76,6 +75,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
         // console.log("camera data " + angular.toJson(data));
         pictureData = 'data:image/jpeg;base64,' + data;
         console.log(pictureData)
+        $scope.show = true;
         $scope.pictureUrl = pictureData;
 
         getCoords().then(function(position) {
@@ -108,6 +108,8 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
     data: {params: {pictureData: pictureData,coordData: coordData}}
     }).then(function successCallback(response) {
       console.log("in successCallback")
+      $scope.show = false;
+      $scope.disabled = true;
       $scope.testAjax = response.data.url;
 
     }, function errorCallback(response) {

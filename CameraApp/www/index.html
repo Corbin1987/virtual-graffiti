@@ -42,14 +42,14 @@
 
 
     <ion-pane>
-      <ion-header-bar class="bar-stable">
+      <!-- <ion-header-bar class="bar-stable">
         <h1 class="title">Ionic Blank Starter</h1>
-      </ion-header-bar>
+      </ion-header-bar> -->
       <ion-content ng-controller="MapController">
            <div id="map" data-tap-disabled="true"></div>
        </ion-content>
       <ion-content ng-controller="CameraCtrl">
-      <div class="list card">
+      <div class="picture" class="list card" ng-show="show">
         <div class="item item-image">
           <ion-content ng-controller="canvasController">
             <canvas>
@@ -58,9 +58,9 @@
           </ion-content>
         </div>
       </div>
-      <div class="padding">
+      <div class="padding bottom">
         <button ng-click="takePicture()" class="button button-block">Take Picture</button>
-        <button ng-click="savePicture()" ng-disabled="disabled" class="button button-block">Save Picture</button>
+        <button ng-click="savePicture()" ng-disabled="disabled" ng-show="!disabled" class="button button-block">Save Picture</button>
       </div>
       </ion-content>
 
