@@ -7,9 +7,12 @@ class PicturesController < ActionController::Base
   # end
 
   def create
-    @location = Location.create(latitude: params[locationData:[:lat]], longitude: params[locationData:[:long]])
-    @picture = Picture.create(image: params[:pictureData], location_id: @location.id)
-    p params
+
+
+    @location = Location.create(latitude: params[:params][:coordData][:lat], longitude: params[:params][:coordData][:long])
+    @picture = Picture.create(image: params[:params][:pictureData], location_id: @location.id)
+    p @picture
+    p @location
     # picture = Picture.new
 
     check = {u: "you did it!"}

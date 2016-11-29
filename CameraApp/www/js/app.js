@@ -101,10 +101,11 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
   console.log("in save picture");
 
     // url: 'https://radiant-savannah-52082.herokuapp.com/pictures',
+
     $http({
     method: 'POST',
     url : 'http://172.16.0.12:3000/pictures',
-    data: {params: {pictureData: pictureData, coordData: coordData}}
+    data: {params: {pictureData: pictureData,coordData: coordData}}
     }).then(function successCallback(response) {
       console.log("in successCallback")
       $scope.testAjax = response.data.url;
@@ -112,6 +113,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
     }, function errorCallback(response) {
       console.log(response);
     });
+
 
 
   }
