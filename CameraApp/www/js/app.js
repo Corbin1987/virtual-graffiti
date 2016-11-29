@@ -1,8 +1,3 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
 var app = angular.module('starter', ['ionic', 'ngCordova'])
 
 app.run(function($ionicPlatform) {
@@ -23,22 +18,6 @@ app.run(function($ionicPlatform) {
   });
 })
 
-app.controller('SimpleAjax', function($scope, $http) {
-
-  $scope.testAjax = "Test";
-
-  $http({
-  method: 'GET',
-  url: 'https://radiant-savannah-52082.herokuapp.com/'
-}).then(function successCallback(response) {
-  console.log(response)
-    $scope.testAjax = response.data.url;
-    debugger
-  }, function errorCallback(response) {
-    $scope.testAjax = "error";
-  });
-});
-
 
 // var addMarker = navigator.geolocation.getCurrentPosition(function(position) {
 //       var marker = new google.maps.Marker({position:
@@ -53,12 +32,18 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
 
   $scope.disabled = true;
   $scope.show = false;
+  $scope.myClass = ['list', 'card', 'picture', 'test'];
+
 
   var pictureData;
   var coordData;
 
   // $scope.pictureUrl = "http://placehold.it/300x500";
   $scope.takePicture = function() {
+
+
+
+    // $scope.class = "top";
     $scope.disabled = true;
     var options = {
       quality: 100,
@@ -76,6 +61,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
         pictureData = 'data:image/jpeg;base64,' + data;
         console.log(pictureData)
         $scope.show = true;
+        
         $scope.pictureUrl = pictureData;
 
         getCoords().then(function(position) {
@@ -98,7 +84,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
 
   $scope.savePicture = function(){
 
-  console.log("in save picture");
+    // ADD A SAVING TAG
 
     // url: 'https://radiant-savannah-52082.herokuapp.com/pictures',
 
@@ -108,9 +94,12 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
     data: {params: {pictureData: pictureData,coordData: coordData}}
     }).then(function successCallback(response) {
       console.log("in successCallback")
+      // $scope.class = "bot";
       $scope.show = false;
       $scope.disabled = true;
-      $scope.testAjax = response.data.url;
+
+      // respond with a success toast
+      // $scope.testAjax = response.data.url;
 
     }, function errorCallback(response) {
       console.log(response);
@@ -120,6 +109,8 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
 
   }
 });
+
+
 
 
 app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoading, $ionicPlatform) {
@@ -154,22 +145,22 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
 
 }); // end of mapController
 
-app.controller('canvasController', function($scope) {
-  var canvas = document.getElementByTagName("canvas");
-  var ctx = canvas.getContext("2d");
-  var drawingColor = "#FFFFFF";
-  $scope.canvas = canvas;
+// app.controller('canvasController', function($scope) {
+//   var canvas = document.getElementByTagName("canvas");
+//   var ctx = canvas.getContext("2d");
+//   var drawingColor = "#FFFFFF";
+//   $scope.canvas = canvas;
 
-  var testFunction = function() {
-    ctx.beginPath();
-    ctx.moveTo(40, 40);
-    ctx.lineTo(60, 60);
-    ctx.strokeStyle = drawingColor;
-    ctx.stroke();
-    ctx.closePath();
-  };
+//   var testFunction = function() {
+//     ctx.beginPath();
+//     ctx.moveTo(40, 40);
+//     ctx.lineTo(60, 60);
+//     ctx.strokeStyle = drawingColor;
+//     ctx.stroke();
+//     ctx.closePath();
+//   };
 
-  testFunction();
+//   testFunction();
 
   // canvas.addEventListener("touchstart", function() {
   //   ctx.beginPath();
@@ -187,4 +178,4 @@ app.controller('canvasController', function($scope) {
   //   ctx.closePath();
   // });
 
-}); // end of canvasController
+// }); // end of canvasController
