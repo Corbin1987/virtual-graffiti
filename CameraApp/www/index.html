@@ -45,22 +45,22 @@
       <ion-header-bar class="bar-stable">
         <h1 class="title">Ionic Blank Starter</h1>
       </ion-header-bar>
-      <ion-content ng-controller="MapController">
+<!--       <ion-content ng-controller="MapController">
            <div id="map" data-tap-disabled="true"></div>
-       </ion-content>
-      <ion-content ng-controller="CameraCtrl">
+       </ion-content> -->
+      <!-- <ion-content ng-controller="CameraCtrl"> -->
       <div class="list card">
         <div class="item item-image">
-          <!-- <ion-content ng-controller="canvasController"> -->
-            <!-- <canvas> -->
-              <img ng-src="{{pictureUrl}}">
-            <!-- </canvas> -->
+          <ion-content ng-controller="canvasController">
+            <canvas id="canvas">
+              <!-- <img ng-src="{{pictureUrl}}"> -->
+            </canvas>
           <!-- </ion-content> -->
         </div>
       </div>
       <div class="padding">
-        <button ng-click="takePicture()" class="button button-block">Take Picture</button>
-        <button ng-click="savePicture()" ng-disabled="disabled" class="button button-block">Save Picture</button>
+        <!-- <button ng-click="takePicture()" class="button button-block">Take Picture</button> -->
+        <!-- <button ng-click="savePicture()" ng-disabled="disabled" class="button button-block">Save Picture</button> -->
       </div>
       </ion-content>
 

@@ -153,12 +153,12 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
 }); // end of mapController
 
 app.controller('canvasController', function($scope) {
-  var canvas = document.getElementByTagName("canvas");
+  var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
   var drawingColor = "#FFFFFF";
   $scope.canvas = canvas;
 
-  var testFunction = function() {
+  $scope.testFunction = function() {
     ctx.beginPath();
     ctx.moveTo(40, 40);
     ctx.lineTo(60, 60);
