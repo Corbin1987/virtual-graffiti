@@ -51,7 +51,8 @@
       <!-- <ion-content ng-controller="CameraCtrl"> -->
       <div class="list card">
         <div class="item item-image">
-          <ion-content ng-controller="canvasController">
+          <!-- <ion-content ng-controller="canvasController"> -->
+            <!-- <canvas id="canvas" ng-src="{{canvas}}"> -->
             <canvas id="canvas">
               <!-- <img ng-src="{{pictureUrl}}"> -->
             </canvas>
@@ -65,7 +66,23 @@
       </ion-content>
 
     </ion-pane>
+<script type="text/javascript">
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  var drawingColor = "#231f20";
+  // $scope.canvas = canvas;
 
+  var testFunction = function() {
+    ctx.beginPath();
+    ctx.moveTo(40, 40);
+    ctx.lineTo(60, 60);
+    ctx.strokeStyle = drawingColor;
+    ctx.stroke();
+    ctx.closePath();
+  }
+
+  testFunction();
+  </script>
 
   </body>
 </html>
