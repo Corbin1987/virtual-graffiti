@@ -9,16 +9,48 @@
 }
 
 .bottom {
+  float: right;
   position: absolute;
-  z-index: 3;
+  z-index: 10;
   bottom: 0px;
-  width: 100%;
+  right: 0px;
+  /*width: 25%;*/
+  /*height: 25%;*/
 }
 
 .picture {
-
   
-  z-index: 1;
+  /*z-index: 1;*/
   /*height: 50%;*/
   /*width: 70%;*/
+}
+.img-button {
+  width: 25px;
+  height: 25px;
+  clear: both;
+  overflow: hidden;
+}
+
+.img-button img {
+  min-width: 100%;
+
+}
+
+.test {
+  background-color: red;
+}
+
+/*.overlay {
+  z-index: 10;
+}*/
+.top {
+  position: fixed;
+  z-index: 5;
+}
+.mid {
+  z-index: 1;
+}
+.bot {
+  position: fixed;
+  z-index: 0;
 }
