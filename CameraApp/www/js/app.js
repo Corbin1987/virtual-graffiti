@@ -50,6 +50,7 @@ app.controller('SimpleAjax', function($scope, $http) {
 
 
 app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocation, $http) {
+  //= require drawing.js
 
   $scope.disabled = true;
 
