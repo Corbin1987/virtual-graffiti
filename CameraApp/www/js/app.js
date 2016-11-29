@@ -29,6 +29,7 @@ app.run(function($ionicPlatform) {
 
 
 app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocation, $http) {
+  //= require drawing.js
 
   $scope.disabled = true;
   $scope.show = false;
@@ -179,3 +180,4 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
   // });
 
 // }); // end of canvasController
+
