@@ -151,38 +151,3 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
   });
 
 }); // end of mapController
-
-app.controller('canvasController', function($scope) {
-  var canvas = document.getElementById("canvas");
-  var ctx = canvas.getContext("2d");
-  var drawingColor = "#000000";
-  $scope.canvas = canvas;
-
-  $scope.testFunction = function() {
-    ctx.beginPath();
-    ctx.moveTo(40, 40);
-    ctx.lineTo(60, 60);
-    ctx.strokeStyle = drawingColor;
-    ctx.stroke();
-    ctx.closePath();
-  }
-
-  $scope.testFunction();
-
-  // canvas.addEventListener("touchstart", function() {
-  //   ctx.beginPath();
-  //   ctx.moveTo(x, y); //move to user position
-  //   ctx.strokeStyle = drawingColor;
-  // });
-
-  // canvas.addEventListener("touchmove", function() {
-  //   ctx.lineTo(x, y); //follow user position
-  //   ctx.stroke();
-  //   ctx.moveTo(x, y); // continue to follow user position
-  // });
-
-  // canvas.addEventListener("touchend", function() {
-  //   ctx.closePath();
-  // });
-
-}); // end of canvasController
