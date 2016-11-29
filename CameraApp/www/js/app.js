@@ -166,13 +166,11 @@ app.controller('canvasController', function() {
   canvas.addEventListener("touchmove", function() {
     ctx.lineTo(x, y); //follow user position
     ctx.stroke();
+    ctx.moveTo(x, y); // continue to follow user position
   });
 
-
-
+  canvas.addEventListener("touchend", function() {
+    ctx.closePath();
+  });
 
 }); // end of canvasController
-
-
-
-
