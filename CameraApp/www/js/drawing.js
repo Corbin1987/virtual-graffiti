@@ -1,6 +1,6 @@
-  var canvas = document.getElementById("canvas");
-  var ctx = canvas.getContext("2d");
-  var drawingColor = "#000000";
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var drawingColor = "#000000";
 
   // Set up mouse events for drawing
 var drawing = false;

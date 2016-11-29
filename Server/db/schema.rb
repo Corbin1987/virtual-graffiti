@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20161127232020) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "locations", force: :cascade do |t|
     t.string   "latitude",   null: false
     t.string   "longitude",  null: false
@@ -21,13 +24,17 @@ ActiveRecord::Schema.define(version: 20161127232020) do
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.string   "image_file_name",    null: false
-    t.string   "image_content_type", null: false
-    t.integer  "image_file_size",    null: false
-    t.datetime "image_updated_at",   null: false
-    t.integer  "location_id",        null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.string   "image_file_name",          null: false
+    t.string   "image_content_type",       null: false
+    t.integer  "image_file_size",          null: false
+    t.datetime "image_updated_at",         null: false
+    t.string   "drawn_image_file_name",    null: false
+    t.string   "drawn_image_content_type", null: false
+    t.integer  "drawn_image_file_size",    null: false
+    t.datetime "drawn_image_updated_at",   null: false
+    t.integer  "location_id",              null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
 end
