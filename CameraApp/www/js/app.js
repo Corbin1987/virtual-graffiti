@@ -115,6 +115,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
     });
 
 
+
   }
 });
 
