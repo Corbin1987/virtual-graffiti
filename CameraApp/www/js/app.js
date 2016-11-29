@@ -56,27 +56,6 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
   var pictureData;
   var coordData;
 
-  var canvas = document.getElementById("canvas");
-  ctx = canvas.getContext("2d");
-  var drawingColor = "#000000";
-  $scope.canvas = canvas;
-
-  canvas.addEventListener("touchstart", function() {
-    ctx.beginPath();
-    ctx.moveTo(Touch.screenX, Touch.screenY); //move to user position
-    ctx.strokeStyle = drawingColor;
-  });
-
-  canvas.addEventListener("touchmove", function() {
-    ctx.lineTo(Touch.screenX, Touch.screenY); //follow user position
-    ctx.stroke();
-    // ctx.moveTo(touchX, touchY); // continue to follow user position
-  });
-
-  canvas.addEventListener("touchend", function() {
-    ctx.closePath();
-  });
-
   $scope.pictureUrl = "http://placehold.it/300x500";
   $scope.takePicture = function() {
     $scope.disabled = true;
