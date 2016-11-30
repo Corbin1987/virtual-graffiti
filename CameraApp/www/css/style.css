@@ -51,6 +51,11 @@ canvas {
   overflow: hidden;
 }
 
+#color-palette {
+  display: none;
+  width: 100%;
+}
+
 .test {
   background-color: red;
 }
