@@ -280,8 +280,19 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
       // function(err) {
       //   $ionicLoading.hide();
       //   console.log(err);
-        window.setInterval(updateMarkers, 5000);
+      updateMarkers();
+        window.setInterval(updateMarkers, 10000);
+        window.setInterval(updatePosition, 3000);
       });
+
+      function updatePosition(){
+        debugger
+        var marker = new google.maps.Marker({
+                map: map,
+                position: myLatlng,
+                icon: 'https://s3.amazonaws.com/virtualgraffiti1/icons/16px-Bluedot.svg.png'
+            });
+      }
     
 
       function updateMarkers(){
@@ -305,13 +316,6 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
               markers[i].setMap(null);
             }
             markers = [];
-
-            var marker = new google.maps.Marker({
-                map: map,
-                position: myLatlng,
-                icon: 'https://s3.amazonaws.com/virtualgraffiti1/icons/16px-Bluedot.svg.png'
-            });
-            markers.push(marker)
 
             response.data.forEach(function(markerData){
               var marker = new google.maps.Marker({
