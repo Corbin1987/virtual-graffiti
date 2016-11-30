@@ -40,7 +40,6 @@
         <h1 class="title">Ionic Blank Starter</h1>
 
       </ion-header-bar> -->
-      
       <ion-content ng-controller="MapController">
         <div class="mid" id="map" data-tap-disabled="true"></div>
       </ion-content>
@@ -56,13 +55,17 @@
           <button ng-click="savePicture()" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><div class="img-button"></div></button>
           <button id="erase" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><div class="img-button">Erase</div></button>
           <select id="color-palette" onchange="changeColor()">
-            <option ng-repeat="x in colors">{{x}}</option>
+            <option>black</option>
+            <option>white</option>
+            <option>blue</option>
+            <option>red</option>
+            <option>yellow</option>
+            <option>green</option>
+            <option>orange</option>
+            <option>purple</option>
           </select>
-
         </div>
       </div>
-
-
     </ion-pane>
   </body>
 </html>
