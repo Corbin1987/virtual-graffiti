@@ -63,6 +63,10 @@
             <button id="orange" class="button button-block color-button" ng-disabled="disabled" ng-show="!disabled">Orange</button>
             <button id="purple" class="button button-block color-button" ng-disabled="disabled" ng-show="!disabled">Purple</button>
           </div> <!-- End of color-palette div-->
+          <select id="color-palette">
+            <option ng-repeat="x in colors">{{x}}</option>
+          </select>
+
         </div>
       </div>
 
