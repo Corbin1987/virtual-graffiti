@@ -238,7 +238,14 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
   white = #ffffff
   black = #000000
 
+  var colorDisplayButton = document.getElementById("color-picker");
+  var colorPalette = document.getElementById("color-palette");
+  var blackButton = document.getElementById("black");
+  var
 
+  colorDisplayButton.addEventListener("click", function() {
+    colorPalette.toggle();
+  });
 
 /////////////////////////////////////////////////////// DRAWING JS //////////////////////////////////////////////////////////////////
 
