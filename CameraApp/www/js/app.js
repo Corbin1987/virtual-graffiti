@@ -229,22 +229,51 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
     clearCanvas();
   });
 
-  blue = #0050ff
-  red = #ff0000
-  yellow = #fff600
-  green = #32ff00
-  orange = #ff8c00
-  purple = #b200ff
-  white = #ffffff
-  black = #000000
-
   var colorDisplayButton = document.getElementById("color-picker");
   var colorPalette = document.getElementById("color-palette");
   var blackButton = document.getElementById("black");
-  var
+  var whiteButton = document.getElementById("white");
+  var blueButton = document.getElementById("blue");
+  var redButton = document.getElementById("red");
+  var yellowButton = document.getElementById("yellow");
+  var greenButton = document.getElementById("green");
+  var orangeButton = document.getElementById("orange");
+  var purpleButton = document.getElementById("purple");
 
   colorDisplayButton.addEventListener("click", function() {
     colorPalette.toggle();
+  });
+
+  blackButton.addEventListener("click", function() {
+    drawingColor = "#000000";
+  });
+
+  whiteButton.addEventListener("click", function() {
+    drawingColor = "#ffffff";
+  });
+
+  blueButton.addEventListener("click", function() {
+    drawingColor = "#0050ff";
+  });
+
+  redButton.addEventListener("click", function() {
+    drawingColor = "#ff0000";
+  });
+
+  yellowButton.addEventListener("click", function() {
+    drawingColor = "#fff600";
+  });
+
+  greenButton.addEventListener("click", function() {
+    drawingColor = "#32ff00";
+  });
+
+  orangeButton.addEventListener("click", function() {
+    drawingColor = "#ff8c00";
+  });
+
+  purpleButton.addEventListener("click", function() {
+    drawingColor = "#b200ff";
   });
 
 /////////////////////////////////////////////////////// DRAWING JS //////////////////////////////////////////////////////////////////
