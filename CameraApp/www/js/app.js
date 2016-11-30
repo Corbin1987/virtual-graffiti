@@ -286,7 +286,6 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
       });
 
       function updatePosition(){
-        debugger
         var marker = new google.maps.Marker({
                 map: map,
                 position: myLatlng,
