@@ -224,29 +224,22 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
   }
 
   var eraseButton = document.getElementById("erase");
-  var drawingButton = document.getElementById("draw");
+
+  var clicks = 0;
 
   eraseButton.addEventListener("click", function() {
-    eraseButton.id = "draw";
-    drawingColor = "00000000";
+    if (clicks === 0) {
+      clicks ++;
+      drawingColor = "00FFFFFF";
+    } else {
+      clicks = 0;
+      drawingColor = "#000000";
+    }
   });
-
-  drawingButton.addEventListener("click", function() {
-    drawingButton.id = "erase";
-    drawingColor = "#000000";
-  });
-
-
-
-
-
 
 /////////////////////////////////////////////////////// DRAWING JS //////////////////////////////////////////////////////////////////
 
 });
-
-
-
 
 app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoading, $ionicPlatform) {
   $ionicPlatform.ready(function() {
