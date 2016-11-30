@@ -44,6 +44,13 @@ canvas {
   min-width: 100%;
 }
 
+.color-button {
+  width: 25px;
+  height: 25px;
+  clear: both;
+  overflow: hidden;
+}
+
 .test {
   background-color: red;
 }
