@@ -223,8 +223,18 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
+  var eraseButton = document.getElementById("erase");
+  var drawingButton = document.getElementById("draw");
 
+  eraseButton.addEventListener("click", function() {
+    eraseButton.id = "draw";
+    drawingColor = "00000000";
+  });
 
+  drawingButton.addEventListener("click", function() {
+    drawingButton.id = "erase";
+    drawingColor = "#000000";
+  });
 
 
 
