@@ -220,6 +220,9 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
 app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoading, $ionicPlatform, $http) {
   var map;
   var markers = [];
+  var markerPos = [];
+  
+
   $ionicPlatform.ready(function() {
       // $ionicLoading.show({
       //   template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Acquiring location!'
@@ -255,15 +258,20 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
       //   $ionicLoading.hide();
       //   console.log(err);
       updateMarkers();
-        window.setInterval(updateMarkers, 60000);
         window.setInterval(updatePosition, 3000);
+        window.setInterval(updateMarkers, 60000);
       });
       function updatePosition(){
+        for (var i = 0; i < markerPos.length; i++) {
+              markerPos[i].setMap(null);
+            }
+        markerPos = [];
         var marker = new google.maps.Marker({
                 map: map,
                 position: myLatlng,
                 icon: 'https://s3.amazonaws.com/virtualgraffiti1/icons/16px-Bluedot.svg.png'
             });
+        markerPos.push(marker)
       }
 
       function updateMarkers(){
