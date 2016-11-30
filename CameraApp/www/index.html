@@ -52,17 +52,6 @@
           <button ng-click="takePicture()" class="button button-block"><div class="img-button"><img src="img/cam.jpg"></div></button>
           <button ng-click="savePicture()" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><div class="img-button"></div></button>
           <button id="erase" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><div class="img-button">Erase</div></button>
-          <button id="color-picker" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><div class="img-button">Colors</div></button>
-          <div id="color-palette">
-            <button id="black" class="button button-block color-button" ng-disabled="disabled" ng-show="!disabled">Black</button>
-            <button id="white" class="button button-block color-button" ng-disabled="disabled" ng-show="!disabled" >White</button>
-            <button id="blue" class="button button-block color-button" ng-disabled="disabled" ng-show="!disabled">Blue</button>
-            <button id="red" class="button button-block color-button" ng-disabled="disabled" ng-show="!disabled">Red</button>
-            <button id="yellow" class="button button-block color-button" ng-disabled="disabled" ng-show="!disabled">Yellow</button>
-            <button id="green" class="button button-block color-button" ng-disabled="disabled" ng-show="!disabled">Green</button>
-            <button id="orange" class="button button-block color-button" ng-disabled="disabled" ng-show="!disabled">Orange</button>
-            <button id="purple" class="button button-block color-button" ng-disabled="disabled" ng-show="!disabled">Purple</button>
-          </div> <!-- End of color-palette div-->
           <select id="color-palette">
             <option ng-repeat="x in colors">{{x}}</option>
           </select>
