@@ -42,10 +42,10 @@ Rails.application.configure do
   config.paperclip_defaults = {
     storage: :s3,
     :s3_credentials => {
-      :bucket => ENV['S3_BUCKET_NAME'],
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
-      :s3_region => ENV['AWS_REGION']
+      :bucket => 'virtualgraffiti1',
+      :access_key_id => 'AKIAIWRAJ5KWCQG6ULLA',
+      :secret_access_key => '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',
+      :s3_region => 'us-east-1'
     }
   }
 
