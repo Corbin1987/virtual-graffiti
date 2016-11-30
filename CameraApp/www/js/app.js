@@ -235,6 +235,8 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
   green = #32ff00
   orange = #ff8c00
   purple = #b200ff
+  white = #ffffff
+  black = #000000
 
 
 
