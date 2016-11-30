@@ -229,6 +229,15 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
     clearCanvas();
   });
 
+  blue = #0050ff
+  red = #ff0000
+  yellow = #fff600
+  green = #32ff00
+  orange = #ff8c00
+  purple = #b200ff
+
+
+
 /////////////////////////////////////////////////////// DRAWING JS //////////////////////////////////////////////////////////////////
 
 });
