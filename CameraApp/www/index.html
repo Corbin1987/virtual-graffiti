@@ -16,12 +16,14 @@
       }
     </script>-->
 
+
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
    <!--  <style>
       img {position: absolute; z-index: -1;}
       canvas {width: 100%; height: 100%}
     </style> -->
+
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -58,6 +60,7 @@
         <div class="padding bottom">
           <button ng-click="takePicture()" class="button button-block"><div class="img-button"><img src="img/cam.jpg"></div></button>
           <button ng-click="savePicture()" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><div class="img-button"></div></button>
+          <button id="erase" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><div class="img-button">Eraser</div></button>
         </div>
       </div>
 

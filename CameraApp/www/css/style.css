@@ -1,13 +1,19 @@
-/* Empty. Add your own CSS if you like */
+img {
+  position: absolute;
+  z-index: -1;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
 .scroll {
     height: 100%;
 }
-img {position: absolute; z-index: -1;}
-canvas {width: 100%; height: 100%}
- 
 #map {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .bottom {
@@ -21,11 +27,11 @@ canvas {width: 100%; height: 100%}
 }
 
 .picture {
-  
   /*z-index: 1;*/
   /*height: 50%;*/
   /*width: 70%;*/
 }
+
 .img-button {
   width: 25px;
   height: 25px;
@@ -35,7 +41,6 @@ canvas {width: 100%; height: 100%}
 
 .img-button img {
   min-width: 100%;
-
 }
 
 .test {
@@ -45,13 +50,16 @@ canvas {width: 100%; height: 100%}
 /*.overlay {
   z-index: 10;
 }*/
+
 .top {
   position: fixed;
   z-index: 5;
 }
+
 .mid {
   z-index: 1;
 }
+
 .bot {
   position: fixed;
   z-index: 0;

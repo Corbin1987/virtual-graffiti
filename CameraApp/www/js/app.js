@@ -58,7 +58,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
         pictureData = 'data:image/jpeg;base64,' + data;
         // console.log(pictureData)
         $scope.show = true;
-        
+
         $scope.pictureUrl = pictureData;
 
         getCoords().then(function(position) {
@@ -102,7 +102,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
       // $scope.class = "bot";
       $scope.show = false;
       $scope.disabled = true;
-
+      clearCanvas();
       // respond with a success toast
       // $scope.testAjax = response.data.url;
 
@@ -215,10 +215,22 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
     }
   }, false);
 
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
 
+  var eraseButton = document.getElementById("erase");
+  var drawingButton = document.getElementById("draw");
 
+  eraseButton.addEventListener("click", function() {
+    eraseButton.id = "draw";
+    drawingColor = "00000000";
+  });
 
-
+  drawingButton.addEventListener("click", function() {
+    drawingButton.id = "erase";
+    drawingColor = "#000000";
+  });
 
 
 
@@ -351,5 +363,4 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
   });
 
 }); // end of mapController
-
 
