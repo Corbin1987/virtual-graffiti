@@ -106,7 +106,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
       // $scope.class = "bot";
       $scope.show = false;
       $scope.disabled = true;
-
+      clearCanvas();
       // respond with a success toast
       // $scope.testAjax = response.data.url;
 
@@ -219,7 +219,9 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
     }
   }, false);
 
-
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
 
 
 
