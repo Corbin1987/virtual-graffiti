@@ -221,17 +221,32 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
 
   var eraseButton = document.getElementById("erase");
 
-  var clicks = 0;
-
   eraseButton.addEventListener("click", function() {
-    if (clicks === 0) {
-      clicks ++;
-      drawingColor = "00FFFFFF";
-    } else {
-      clicks = 0;
-      drawingColor = "#000000";
-    }
+    clearCanvas();
   });
+
+  $scope.colors = ["black", "white", "blue", "red", "yellow", "green", "orange", "purple"];
+
+  function changeColor() {
+    var color = document.getElementById("color-palette").value;
+    if (color === "black") {
+      drawingColor = "#000000";
+    } else if (color === "white") {
+      drawingColor = "#ffffff";
+    } else if (color === "blue") {
+      drawingColor = "#0050ff";
+    } else if (color === "red") {
+      drawingColor = "#ff0000";
+    } else if (color === "yellow") {
+      drawingColor = "#fff600";
+    } else if (color === "green") {
+      drawingColor = "#32ff00";
+    } else if (color === "orange") {
+      drawingColor = "#ff8c00";
+    } else if (color === "purple") {
+      drawingColor = "#b200ff";
+    }
+  }
 
 /////////////////////////////////////////////////////// DRAWING JS //////////////////////////////////////////////////////////////////
 
