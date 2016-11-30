@@ -281,7 +281,7 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
       //   $ionicLoading.hide();
       //   console.log(err);
       updateMarkers();
-        window.setInterval(updateMarkers, 10000);
+        window.setInterval(updateMarkers, 60000);
         window.setInterval(updatePosition, 3000);
       });
 
