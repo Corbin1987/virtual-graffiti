@@ -224,17 +224,23 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
   }
 
   var eraseButton = document.getElementById("erase");
-  var drawingButton = document.getElementById("draw");
+  // var drawingButton = document.getElementById("draw");
+  var clicks = 0;
 
   eraseButton.addEventListener("click", function() {
-    eraseButton.id = "draw";
-    drawingColor = "00000000";
+    // eraseButton.id = "draw";
+    if (clicks === 0) {
+      clicks ++;
+      drawingColor = "#00000000";
+    } else {
+      clicks = 0;
+      drawingColor = "#000000";
+    }
   });
 
-  drawingButton.addEventListener("click", function() {
-    drawingButton.id = "erase";
-    drawingColor = "#000000";
-  });
+  // drawingButton.addEventListener("click", function() {
+  //   drawingButton.id = "erase";
+  // });
 
 
 
