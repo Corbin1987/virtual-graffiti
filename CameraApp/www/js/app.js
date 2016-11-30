@@ -181,7 +181,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
 
 
   function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.width = canvas.width;
   }
 
   var eraseButton = document.getElementById("erase");
@@ -221,7 +221,7 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
   var map;
   var markers = [];
   var markerPos = [];
-  
+
 
   $ionicPlatform.ready(function() {
       // $ionicLoading.show({
