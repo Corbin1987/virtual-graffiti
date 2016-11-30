@@ -261,6 +261,7 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
 app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoading, $ionicPlatform, $http) {
   var map;
   var markers = [];
+  var markerPos = [];
   $ionicPlatform.ready(function() {
       // $ionicLoading.show({
       //   template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Acquiring location!'
@@ -306,9 +307,23 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
       // function(err) {
       //   $ionicLoading.hide();
       //   console.log(err);
-        window.setInterval(updateMarkers, 5000);
+      updateMarkers();
+        window.setInterval(updateMarkers, 60000);
+        window.setInterval(updatePosition, 3000);
       });
 
+      function updatePosition(){
+        for (var i = 0; i < markerPos.length; i++) {
+              markers[i].setMap(null);
+            }
+            markerPos = [];
+        var marker = new google.maps.Marker({
+                map: map,
+                position: myLatlng,
+                icon: 'https://s3.amazonaws.com/virtualgraffiti1/icons/16px-Bluedot.svg.png'
+            });
+        markerPos.push(marker)
+      }
 
       function updateMarkers(){
         $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
@@ -331,13 +346,6 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
               markers[i].setMap(null);
             }
             markers = [];
-
-            var marker = new google.maps.Marker({
-                map: map,
-                position: myLatlng,
-                icon: 'https://s3.amazonaws.com/virtualgraffiti1/icons/16px-Bluedot.svg.png'
-            });
-            markers.push(marker)
 
             response.data.forEach(function(markerData){
               var marker = new google.maps.Marker({
