@@ -62,7 +62,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
         pictureData = 'data:image/jpeg;base64,' + data;
         // console.log(pictureData)
         $scope.show = true;
-        
+
         $scope.pictureUrl = pictureData;
 
         getCoords().then(function(position) {
@@ -267,39 +267,3 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
   });
 
 }); // end of mapController
-
-// app.controller('canvasController', function($scope) {
-//   var canvas = document.getElementByTagName("canvas");
-//   var ctx = canvas.getContext("2d");
-//   var drawingColor = "#FFFFFF";
-//   $scope.canvas = canvas;
-
-//   var testFunction = function() {
-//     ctx.beginPath();
-//     ctx.moveTo(40, 40);
-//     ctx.lineTo(60, 60);
-//     ctx.strokeStyle = drawingColor;
-//     ctx.stroke();
-//     ctx.closePath();
-//   };
-
-//   testFunction();
-
-  // canvas.addEventListener("touchstart", function() {
-  //   ctx.beginPath();
-  //   ctx.moveTo(x, y); //move to user position
-  //   ctx.strokeStyle = drawingColor;
-  // });
-
-  // canvas.addEventListener("touchmove", function() {
-  //   ctx.lineTo(x, y); //follow user position
-  //   ctx.stroke();
-  //   ctx.moveTo(x, y); // continue to follow user position
-  // });
-
-  // canvas.addEventListener("touchend", function() {
-  //   ctx.closePath();
-  // });
-
-// }); // end of canvasController
-
