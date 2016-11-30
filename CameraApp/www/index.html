@@ -52,7 +52,7 @@
           <button ng-click="takePicture()" class="button button-block"><div class="img-button"><img src="img/cam.jpg"></div></button>
           <button ng-click="savePicture()" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><div class="img-button"></div></button>
           <button id="erase" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><div class="img-button">Erase</div></button>
-          <select id="color-palette">
+          <select id="color-palette" onchange="changeColor()">
             <option ng-repeat="x in colors">{{x}}</option>
           </select>
 
