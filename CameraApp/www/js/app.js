@@ -327,6 +327,7 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
                 map: map
               });
               markers.push(marker)
+              
             })
             markersEventListener();
 
