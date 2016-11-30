@@ -88,6 +88,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
   var drawingColor = "#000000";
+  var lineThickness = 1;
     // Set up mouse events for drawing
   var drawing = false;
   var mousePos = { x:0, y:0 };
@@ -122,6 +123,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
   })();
   function renderCanvas() {
     ctx.strokeStyle = drawingColor;
+    ctx.lineWidth = lineThickness;
     if (drawing) {
       ctx.beginPath();
       ctx.moveTo(lastPos.x, lastPos.y);
