@@ -292,6 +292,7 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
                 position: myLatlng,
                 icon: 'https://s3.amazonaws.com/virtualgraffiti1/icons/16px-Bluedot.svg.png'
             });
+        
       }
     
 
