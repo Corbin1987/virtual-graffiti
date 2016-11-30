@@ -219,6 +219,31 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
     }
   }
 
+  function changeLineWidth() {
+    var lineWidth = document.getElementById("line-width").value;
+    if (lineWidth === "1") {
+      lineThickness = 1;
+    } else if (lineWidth === "2") {
+      lineThickness = 2;
+    } else if (lineWidth === "3") {
+      lineThickness = 3;
+    } else if (lineWidth === "4") {
+      lineThickness = 4;
+    } else if (lineWidth === "5") {
+      lineThickness = 5;
+    } else if (lineWidth === "6") {
+      lineThickness = 6;
+    } else if (lineWidth === "7") {
+      lineThickness = 7;
+    } else if (lineWidth === "8") {
+      lineThickness = 8;
+    } else if (lineWidth === "9") {
+      lineThickness = 9;
+    } else if (lineWidth === "10") {
+      lineThickness = 10;
+    }
+  }
+
 
 /////////////////////////////////////////////////////// DRAWING JS //////////////////////////////////////////////////////////////////
 });
