@@ -121,12 +121,15 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
              };
   })();
   function renderCanvas() {
+    ctx.strokeStyle = drawingColor;
     if (drawing) {
+      ctx.beginPath();
       ctx.moveTo(lastPos.x, lastPos.y);
       ctx.lineTo(mousePos.x, mousePos.y);
-      ctx.
       ctx.stroke();
       lastPos = mousePos;
+    } else {
+      ctx.closePath();
     }
   }
   // Allow for animation
