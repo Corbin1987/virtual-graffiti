@@ -41,7 +41,7 @@
       <ion-content ng-controller="MapController">
         <div class="mid" id="map" data-tap-disabled="true"></div>
       </ion-content>
-      <div ng-controller="CameraCtrl">
+      <div id="camera" ng-controller="CameraCtrl">
         <div ng-class="myClass" ng-show="show">
           <div class="item item-image">
             <img ng-src="{{pictureUrl}}">
@@ -49,8 +49,6 @@
           </div>
         </div>
         <div class="padding bottom">
-          <button ng-click="takePicture()" class="button button-block"><div class="img-button"><img src="img/cam.jpg"></div></button>
-          <button ng-click="savePicture()" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><div class="img-button"></div></button>
           <button id="erase" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><div class="img-button">Erase</div></button>
           <select id="color-palette" onchange="changeColor()">
             <option>black</option>
@@ -74,6 +72,9 @@
             <option>9</option>
             <option>10</option>
           </select>
+          <button ng-click="takePicture()" class="button button-block"><i class="icon ion-android-camera"></i></button>
+          <button ng-click="savePicture()" ng-disabled="disabled" ng-show="!disabled" class="button button-block">
+<i class="icon ion-android-done"></i></div></button>
         </div>
       </div>
     </ion-pane>

@@ -61,6 +61,12 @@ var lineThickness = 1;
       lineThickness = 10;
     }
   }
+function removePictureEventListener(){
+  var pictureDiv = angular.element( document.querySelector( '.picture-overlay' ) );
+  pictureDiv.remove();
+}
+
+
 // var addMarker = navigator.geolocation.getCurrentPosition(function(position) {
 //       var marker = new google.maps.Marker({position:
 //           {lat: position.coords.latitude,
@@ -349,10 +355,24 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
         function markersEventListener(){
             markers.forEach(function(marker){
               google.maps.event.addListener(marker, 'click', function() {
-                 console.log(marker);
+                
+                displayPicture(marker);
               });
+<<<<<<< HEAD
              })
           }
+=======
+             }) 
+        }
+
+        function displayPicture(marker){
+          console.log(marker.imageUrl)
+          console.log(marker.drawnImageUrl)
+          var camDiv = angular.element( document.querySelector( '#camera' ) );
+          camDiv.append('<div class="picture-overlay"><img class="main-img" src="http:' + marker.imageUrl + '"><img src="http:' + marker.drawnImageUrl + '"><div class="padding top-right"><button onclick="removePictureEventListener()" class="super small-me clear-button"><i class="icon ion-android-close"></i></button></div></div>')
+        }
+      
+>>>>>>> master
     }
   });
 }); // end of mapController
