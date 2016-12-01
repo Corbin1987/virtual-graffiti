@@ -34,33 +34,31 @@ var lineThickness = 1;
       drawingColor = "#ff8c00";
     } else if (color === "purple") {
       drawingColor = "#b200ff";
+    } else if (color === "space cadet blue") {
+      drawingColor = "#1D2951 ";
+    } else if (color === "ugly green") {
+      drawingColor = "#00CC00 "; // ugly green
+    } else if (color === "hot pink") {
+      drawingColor = "#ff00cb "; // hot-pink
+    } else if (color === "autumn orange") {
+      drawingColor = "#ff4300 "; //autumn-orange
+    } else if (color === "robin egg blue") {
+      drawingColor = "#7fe1ff "; //robin egg blue
+    } else if (color === "royal purple") {
+      drawingColor = "#6d3dff "; //royal purple
+    } else if (color === "indigo") {
+      drawingColor = "#000a6b "; //indigo
+    } else if (color === "chocolate") {
+      drawingColor = "#381c00 "; // chocolate
+    } else if (color === "grey") {
+      drawingColor = "#727272 "; // grey
     }
   }
 
   function changeLineWidth() {
-    var lineWidth = document.getElementById("line-width").value;
-    if (lineWidth === "1") {
-      lineThickness = 1;
-    } else if (lineWidth === "2") {
-      lineThickness = 2;
-    } else if (lineWidth === "3") {
-      lineThickness = 3;
-    } else if (lineWidth === "4") {
-      lineThickness = 4;
-    } else if (lineWidth === "5") {
-      lineThickness = 5;
-    } else if (lineWidth === "6") {
-      lineThickness = 6;
-    } else if (lineWidth === "7") {
-      lineThickness = 7;
-    } else if (lineWidth === "8") {
-      lineThickness = 8;
-    } else if (lineWidth === "9") {
-      lineThickness = 9;
-    } else if (lineWidth === "10") {
-      lineThickness = 10;
-    }
+    lineThickness = parseInt(document.getElementById("line-width").value);
   }
+
 function removePictureEventListener(){
   var pictureDiv = angular.element( document.querySelector( '.picture-overlay' ) );
   pictureDiv.remove();
@@ -601,10 +599,10 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
         function markersEventListener(){
             markers.forEach(function(marker){
               google.maps.event.addListener(marker, 'click', function() {
-                
+
                 displayPicture(marker);
               });
-             }) 
+             })
         }
 
         function displayPicture(marker){
@@ -613,7 +611,7 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
           var camDiv = angular.element( document.querySelector( '#camera' ) );
           camDiv.append('<div class="picture-overlay"><img class="main-img" src="http:' + marker.imageUrl + '"><img src="http:' + marker.drawnImageUrl + '"><div class="padding top-right"><button onclick="removePictureEventListener()" class="super small-me clear-button"><i class="icon ion-android-close"></i></button></div></div>')
         }
-      
+
     }
   });
 }); // end of mapController
