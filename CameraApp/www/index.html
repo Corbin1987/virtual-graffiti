@@ -48,9 +48,8 @@
             <canvas id="canvas" ng-src="{{canvas}}"></canvas>
           </div>
         </div>
-        <div class="padding bottom">
-          <button id="erase" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><div class="img-button">Erase</div></button>
-          <select id="color-palette" onchange="changeColor()">
+        <div ng-disabled="disabled" ng-show="!disabled" class="move-me-right move-me-down padding top-right">
+          <select id="color-palette" class="button button-block small-button" onchange="changeColor()">
             <option>black</option>
             <option>white</option>
             <option>blue</option>
@@ -60,7 +59,7 @@
             <option>orange</option>
             <option>purple</option>
           </select>
-          <select id="line-width" onchange="changeLineWidth()">
+          <select id="line-width" class="button button-block small-button" onchange="changeLineWidth()">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -72,7 +71,10 @@
             <option>9</option>
             <option>10</option>
           </select>
+        </div>
+        <div class="move-me-right padding bottom">
           <button ng-click="takePicture()" class="button button-block"><i class="icon ion-android-camera"></i></button>
+          <button id="erase" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><i class="icon ion-trash-a"></i></button>
           <button ng-click="savePicture()" ng-disabled="disabled" ng-show="!disabled" class="button button-block">
 <i class="icon ion-android-done"></i></div></button>
         </div>
