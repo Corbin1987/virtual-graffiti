@@ -77,7 +77,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
   //= require drawing.js
   $scope.disabled = true;
   $scope.show = false;
-  $scope.myClass = ['list', 'card', 'picture', 'test'];
+  $scope.myClass = ['list', 'card', 'picture'];
   var pictureData;
   var coordData;
   // $scope.pictureUrl = "http://placehold.it/300x500";
@@ -88,7 +88,6 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
       quality: 100,
       destinationType: Camera.DestinationType.DATA_URL,
       sourceType: Camera.PictureSourceType.CAMERA,
-      allowEdit: true,
       encodingType: Camera.EncodingType.JPEG,
       popoverOptions: CameraPopoverOptions,
       saveToPhotoAlbum: false,
@@ -143,6 +142,12 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
 /////////////////////////////////////////////////////// DRAWING JS //////////////////////////////////////////////////////////////////
   var canvasData;
   var canvas = document.getElementById("canvas");
+
+  // canvas.width = 10;
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
   var ctx = canvas.getContext("2d");
     // Set up mouse events for drawing
   var drawing = false;
@@ -358,10 +363,6 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
                 
                 displayPicture(marker);
               });
-<<<<<<< HEAD
-             })
-          }
-=======
              }) 
         }
 
@@ -372,7 +373,6 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
           camDiv.append('<div class="picture-overlay"><img class="main-img" src="http:' + marker.imageUrl + '"><img src="http:' + marker.drawnImageUrl + '"><div class="padding top-right"><button onclick="removePictureEventListener()" class="super small-me clear-button"><i class="icon ion-android-close"></i></button></div></div>')
         }
       
->>>>>>> master
     }
   });
 }); // end of mapController
