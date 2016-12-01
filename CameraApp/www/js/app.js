@@ -10,6 +10,57 @@ app.run(function($ionicPlatform) {
     }
   });
 })
+
+
+
+var drawingColor = "#000000";
+var lineThickness = 1;
+
+  function changeColor() {
+    var color = document.getElementById("color-palette").value;
+    if (color === "black") {
+      drawingColor = "#000000";
+    } else if (color === "white") {
+      drawingColor = "#ffffff";
+    } else if (color === "blue") {
+      drawingColor = "#0050ff";
+    } else if (color === "red") {
+      drawingColor = "#ff0000";
+    } else if (color === "yellow") {
+      drawingColor = "#fff600";
+    } else if (color === "green") {
+      drawingColor = "#32ff00";
+    } else if (color === "orange") {
+      drawingColor = "#ff8c00";
+    } else if (color === "purple") {
+      drawingColor = "#b200ff";
+    }
+  }
+
+  function changeLineWidth() {
+    var lineWidth = document.getElementById("line-width").value;
+    if (lineWidth === "1") {
+      lineThickness = 1;
+    } else if (lineWidth === "2") {
+      lineThickness = 2;
+    } else if (lineWidth === "3") {
+      lineThickness = 3;
+    } else if (lineWidth === "4") {
+      lineThickness = 4;
+    } else if (lineWidth === "5") {
+      lineThickness = 5;
+    } else if (lineWidth === "6") {
+      lineThickness = 6;
+    } else if (lineWidth === "7") {
+      lineThickness = 7;
+    } else if (lineWidth === "8") {
+      lineThickness = 8;
+    } else if (lineWidth === "9") {
+      lineThickness = 9;
+    } else if (lineWidth === "10") {
+      lineThickness = 10;
+    }
+  }
 // var addMarker = navigator.geolocation.getCurrentPosition(function(position) {
 //       var marker = new google.maps.Marker({position:
 //           {lat: position.coords.latitude,
@@ -87,8 +138,6 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
   var canvasData;
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
-  var drawingColor = "#000000";
-  var lineThickness = 1;
     // Set up mouse events for drawing
   var drawing = false;
   var mousePos = { x:0, y:0 };
@@ -198,51 +247,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
 
   $scope.colors = ["black", "white", "blue", "red", "yellow", "green", "orange", "purple"];
 
-  function changeColor() {
-    var color = document.getElementById("color-palette").value;
-    if (color === "black") {
-      drawingColor = "#000000";
-    } else if (color === "white") {
-      drawingColor = "#ffffff";
-    } else if (color === "blue") {
-      drawingColor = "#0050ff";
-    } else if (color === "red") {
-      drawingColor = "#ff0000";
-    } else if (color === "yellow") {
-      drawingColor = "#fff600";
-    } else if (color === "green") {
-      drawingColor = "#32ff00";
-    } else if (color === "orange") {
-      drawingColor = "#ff8c00";
-    } else if (color === "purple") {
-      drawingColor = "#b200ff";
-    }
-  }
 
-  function changeLineWidth() {
-    var lineWidth = document.getElementById("line-width").value;
-    if (lineWidth === "1") {
-      lineThickness = 1;
-    } else if (lineWidth === "2") {
-      lineThickness = 2;
-    } else if (lineWidth === "3") {
-      lineThickness = 3;
-    } else if (lineWidth === "4") {
-      lineThickness = 4;
-    } else if (lineWidth === "5") {
-      lineThickness = 5;
-    } else if (lineWidth === "6") {
-      lineThickness = 6;
-    } else if (lineWidth === "7") {
-      lineThickness = 7;
-    } else if (lineWidth === "8") {
-      lineThickness = 8;
-    } else if (lineWidth === "9") {
-      lineThickness = 9;
-    } else if (lineWidth === "10") {
-      lineThickness = 10;
-    }
-  }
 
 
 /////////////////////////////////////////////////////// DRAWING JS //////////////////////////////////////////////////////////////////
