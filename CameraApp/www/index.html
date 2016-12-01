@@ -29,6 +29,8 @@
     <script src="cordova.js"></script>
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
     <script src="https://maps-api-ssl.google.com/maps/api/js?key=AIzaSyDID9IUIoiIKrMhfosJMstsdsb1QF8xJqQ&libraries=places"></script>
   </head>
   <body ng-app="starter">
@@ -36,7 +38,6 @@
       <!-- <ion-header-bar class="bar-stable">
         <h1 class="title">Ionic Blank Starter</h1>
       </ion-header-bar> -->
-      
       <ion-content ng-controller="MapController">
         <div class="mid" id="map" data-tap-disabled="true"></div>
       </ion-content>
@@ -48,6 +49,29 @@
           </div>
         </div>
         <div class="padding bottom">
+          <button id="erase" ng-disabled="disabled" ng-show="!disabled" class="button button-block"><div class="img-button">Erase</div></button>
+          <select id="color-palette" onchange="changeColor()">
+            <option>black</option>
+            <option>white</option>
+            <option>blue</option>
+            <option>red</option>
+            <option>yellow</option>
+            <option>green</option>
+            <option>orange</option>
+            <option>purple</option>
+          </select>
+          <select id="line-width" onchange="changeLineWidth()">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+          </select>
           <button ng-click="takePicture()" class="button button-block"><i class="icon ion-android-camera"></i></button>
           <button ng-click="savePicture()" ng-disabled="disabled" ng-show="!disabled" class="button button-block">
 <i class="icon ion-android-done"></i></div></button>
@@ -56,4 +80,3 @@
     </ion-pane>
   </body>
 </html>
-Add Comment

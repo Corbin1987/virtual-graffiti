@@ -11,6 +11,56 @@ app.run(function($ionicPlatform) {
   });
 })
 
+
+
+var drawingColor = "#000000";
+var lineThickness = 1;
+
+  function changeColor() {
+    var color = document.getElementById("color-palette").value;
+    if (color === "black") {
+      drawingColor = "#000000";
+    } else if (color === "white") {
+      drawingColor = "#ffffff";
+    } else if (color === "blue") {
+      drawingColor = "#0050ff";
+    } else if (color === "red") {
+      drawingColor = "#ff0000";
+    } else if (color === "yellow") {
+      drawingColor = "#fff600";
+    } else if (color === "green") {
+      drawingColor = "#32ff00";
+    } else if (color === "orange") {
+      drawingColor = "#ff8c00";
+    } else if (color === "purple") {
+      drawingColor = "#b200ff";
+    }
+  }
+
+  function changeLineWidth() {
+    var lineWidth = document.getElementById("line-width").value;
+    if (lineWidth === "1") {
+      lineThickness = 1;
+    } else if (lineWidth === "2") {
+      lineThickness = 2;
+    } else if (lineWidth === "3") {
+      lineThickness = 3;
+    } else if (lineWidth === "4") {
+      lineThickness = 4;
+    } else if (lineWidth === "5") {
+      lineThickness = 5;
+    } else if (lineWidth === "6") {
+      lineThickness = 6;
+    } else if (lineWidth === "7") {
+      lineThickness = 7;
+    } else if (lineWidth === "8") {
+      lineThickness = 8;
+    } else if (lineWidth === "9") {
+      lineThickness = 9;
+    } else if (lineWidth === "10") {
+      lineThickness = 10;
+    }
+  }
 function removePictureEventListener(){
   var pictureDiv = angular.element( document.querySelector( '.picture-overlay' ) );
   pictureDiv.remove();
@@ -49,7 +99,7 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
         pictureData = 'data:image/jpeg;base64,' + data;
         // console.log(pictureData)
         $scope.show = true;
-        
+
         $scope.pictureUrl = pictureData;
         getCoords().then(function(position) {
           coordData = {lat: position.coords.latitude, long: position.coords.longitude};
@@ -94,7 +144,6 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
   var canvasData;
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
-  var drawingColor = "#000000";
     // Set up mouse events for drawing
   var drawing = false;
   var mousePos = { x:0, y:0 };
@@ -128,11 +177,16 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
              };
   })();
   function renderCanvas() {
+    ctx.strokeStyle = drawingColor;
+    ctx.lineWidth = lineThickness;
     if (drawing) {
+      ctx.beginPath();
       ctx.moveTo(lastPos.x, lastPos.y);
       ctx.lineTo(mousePos.x, mousePos.y);
       ctx.stroke();
       lastPos = mousePos;
+    } else {
+      ctx.closePath();
     }
   }
   // Allow for animation
@@ -185,13 +239,31 @@ app.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaGeolocatio
       e.preventDefault();
     }
   }, false);
+
+
+  function clearCanvas() {
+    canvas.width = canvas.width;
+  }
+
+  var eraseButton = document.getElementById("erase");
+
+  eraseButton.addEventListener("click", function() {
+    clearCanvas();
+  });
+
+  $scope.colors = ["black", "white", "blue", "red", "yellow", "green", "orange", "purple"];
+
+
+
+
 /////////////////////////////////////////////////////// DRAWING JS //////////////////////////////////////////////////////////////////
 });
+
 app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoading, $ionicPlatform, $http) {
   var map;
   var markers = [];
   var markerPos = [];
-  
+
 
   $ionicPlatform.ready(function() {
       // $ionicLoading.show({
@@ -243,14 +315,13 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
             });
         markerPos.push(marker)
       }
-    
+
       function updateMarkers(){
         $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
           lat = position.coords.latitude;
           lng = position.coords.longitude;
           myLatlng = new google.maps.LatLng(lat, lng);
           getMarkers();
-          
         }), function(error) {
           // error for coords
         };
@@ -274,7 +345,7 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
                 map: map
               });
               markers.push(marker)
-              
+
             })
             markersEventListener();
           }, function errorCallback(response) {
@@ -287,6 +358,10 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
                 
                 displayPicture(marker);
               });
+<<<<<<< HEAD
+             })
+          }
+=======
              }) 
         }
 
@@ -297,6 +372,7 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
           camDiv.append('<div class="picture-overlay"><img class="main-img" src="http:' + marker.imageUrl + '"><img src="http:' + marker.drawnImageUrl + '"><div class="padding top-right"><button onclick="removePictureEventListener()" class="super small-me clear-button"><i class="icon ion-android-close"></i></button></div></div>')
         }
       
+>>>>>>> master
     }
   });
 }); // end of mapController
