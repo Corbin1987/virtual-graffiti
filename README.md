@@ -4,4 +4,4 @@ Virtual Graffiti allows an Android mobile user to take a photo that is saved at 
 
 ## Contributors
 - [@stelane](https://github.com/stelane)
-- [@corbin1987](https://github.com/Corbin1987)
+- [@busster](https://github.com/busster)
